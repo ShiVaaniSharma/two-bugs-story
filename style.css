@@ -1,0 +1,306 @@
+/* Basic Reset & Body */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --bg-dark: #1a1d21; /* Very dark grey/blue */
+    --text-light: #e1e1e1;
+    --text-muted: #8a949e;
+    --accent-red: #ff4136; /* Fiery red */
+    --accent-blue: #00a8ff; /* Electric blue */
+    --accent-purple: #b10dcb; /* Vibrant purple */
+    --border-color: #444;
+    --code-bg: #282c34; /* Dark background for code */
+    --header-bg: #111317; /* Even darker header/footer */
+}
+
+body {
+    font-family: 'Roboto Mono', monospace; /* More techy feel */
+    line-height: 1.7;
+    color: var(--text-light);
+    background-color: var(--bg-dark);
+    padding-top: 90px; /* Account for fixed header */
+    /* Optional: Subtle scanline effect */
+    /* background-image: linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px); */
+    /* background-size: 1px 3px; */
+}
+
+/* Typography */
+h1, h2 {
+    font-family: 'Orbitron', sans-serif; /* Futuristic/Dramatic font */
+    margin-bottom: 1.5rem;
+    color: var(--accent-blue); /* Electric blue titles */
+    text-shadow: 0 0 5px rgba(0, 168, 255, 0.5); /* Subtle glow */
+}
+
+h1 {
+    font-size: 2.8rem;
+    text-align: center;
+    margin-bottom: 0.5rem;
+    color: var(--accent-red); /* Fiery red for main title */
+     text-shadow: 0 0 8px rgba(255, 65, 54, 0.6);
+}
+
+h2 {
+    font-size: 2rem;
+    border-bottom: 3px solid var(--accent-purple); /* Purple accent */
+    padding-bottom: 0.5rem;
+}
+
+p {
+    margin-bottom: 1.2rem;
+}
+
+strong {
+    font-weight: bold;
+    color: #ffffff; /* Brighter emphasis */
+}
+
+em {
+    font-style: italic;
+    color: var(--accent-blue); /* Blue italics */
+}
+
+code { /* Inline code */
+    background-color: var(--code-bg);
+    color: var(--accent-red);
+    padding: 0.2em 0.4em;
+    border-radius: 3px;
+    font-size: 0.9em;
+    border: 1px solid var(--border-color);
+}
+
+blockquote {
+    background-color: rgba(0, 168, 255, 0.05); /* Faint blue background */
+    border-left: 5px solid var(--accent-blue);
+    padding: 1.2rem;
+    margin: 1.5rem 0;
+    font-style: italic;
+    color: var(--text-muted);
+}
+
+blockquote.error-alert {
+    background-color: rgba(255, 65, 54, 0.1); /* Reddish background */
+    border-left-color: var(--accent-red);
+    color: var(--accent-red);
+    font-weight: bold;
+    font-style: normal;
+}
+
+
+/* Header & Footer */
+header {
+    background-color: var(--header-bg);
+    color: var(--text-light);
+    padding: 1.5rem 1rem 1rem 1rem;
+    text-align: center;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.5);
+    border-bottom: 2px solid var(--accent-red);
+}
+
+header .subtitle {
+    color: var(--text-muted);
+    font-size: 1rem;
+    margin-bottom: 0;
+    font-family: 'Roboto Mono', monospace;
+}
+
+footer {
+    background-color: var(--header-bg);
+    color: var(--text-muted);
+    text-align: center;
+    padding: 1.5rem;
+    margin-top: 3rem;
+    font-size: 0.9rem;
+    border-top: 1px solid var(--border-color);
+}
+
+/* Layout & Sections */
+main {
+    max-width: 850px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+.story-section {
+    background-color: #22262a; /* Slightly lighter than body */
+    margin-bottom: 2.5rem;
+    border-radius: 5px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    border: 1px solid var(--border-color);
+    opacity: 0; /* Initially hidden for fade-in */
+    transform: translateY(30px); /* Start slightly lower */
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    overflow: hidden;
+    position: relative; /* For potential pseudo-element effects */
+}
+
+/* Optional: Add subtle glow effect to sections */
+/* .story-section::before {
+    content: '';
+    position: absolute;
+    top: -2px; left: -2px; right: -2px; bottom: -2px;
+    background: linear-gradient(45deg, var(--accent-blue), var(--accent-purple), var(--accent-red));
+    z-index: -1;
+    filter: blur(10px);
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+.story-section:hover::before {
+    opacity: 0.3;
+} */
+
+
+.story-section.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+.section-content {
+     padding: 2rem 2.5rem;
+}
+
+/* Section Specific Styling */
+#chapter1 { border-left: 5px solid var(--accent-red); }
+#chapter2 { border-left: 5px solid var(--accent-purple); }
+#chapter3 { border-left: 5px solid var(--accent-blue); }
+#chapter4 { border-left: 5px solid #fdcb6e; } /* Yellow for false hope */
+#chapter5 { border-left: 5px solid #ffffff; } /* White/Clinical for QA */
+#chapter6 { border-left: 5px solid var(--accent-red); } /* Red for purge */
+#chapter7 { border-left: 5px solid var(--accent-red); border-right: 5px solid var(--accent-red); } /* Double red for crash */
+#epilogue { border-top: 1px solid var(--text-muted); border-bottom: 1px solid var(--text-muted); }
+
+
+.ending {
+    font-weight: bold;
+    text-align: center;
+    font-size: 1.4rem;
+    margin-top: 2rem;
+    color: var(--accent-red);
+    text-shadow: 0 0 5px rgba(255, 65, 54, 0.5);
+}
+
+.ending-korean {
+    text-align: center;
+    font-size: 1.2rem;
+    color: var(--text-muted);
+    margin-top: 0.5rem;
+    opacity: 0; /* Initially hidden */
+    animation: fade-in-korean 2s ease-out 1s forwards; /* Fade in after 1s */
+}
+
+@keyframes fade-in-korean {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+
+/* Images */
+.story-image {
+    max-width: 80%; /* Slightly smaller */
+    height: auto;
+    border-radius: 4px;
+    margin: 0 auto 1.5rem auto; /* Center image */
+    display: block;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+    border: 1px solid #000;
+}
+
+/* Code Blocks */
+pre {
+    background-color: var(--code-bg);
+    color: #abb2bf; /* Common light text color for dark themes */
+    padding: 1.5rem;
+    border-radius: 5px;
+    overflow-x: auto;
+    margin: 1.5rem 0;
+    font-family: 'Roboto Mono', monospace;
+    font-size: 0.95rem;
+    border: 1px solid var(--border-color);
+     box-shadow: inset 0 0 10px rgba(0,0,0,0.5);
+}
+
+/* Glitch Effect (Slightly more intense) */
+.glitch-text {
+  position: relative;
+  display: inline-block;
+  /* Optional: Add slight skew */
+  /* transform: skew(-5deg); */
+}
+
+.glitch-text::before,
+.glitch-text::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--header-bg); /* Match header background */
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+}
+
+.glitch-text::before {
+  left: 3px; /* Increased shift */
+  text-shadow: -2px 0 var(--accent-red);
+  animation: glitch-anim-1 1.5s infinite linear alternate-reverse; /* Faster */
+}
+
+.glitch-text::after {
+  left: -3px; /* Increased shift */
+  text-shadow: 2px 0 var(--accent-blue); /* Swapped color */
+  animation: glitch-anim-2 1.8s infinite linear alternate-reverse; /* Different speed */
+}
+
+@keyframes glitch-anim-1 {
+  0% { clip: rect(42px, 9999px, 44px, 0); transform: skew(0.3deg); }
+  20% { clip: rect(15px, 9999px, 99px, 0); transform: skew(0.1deg); }
+  40% { clip: rect(75px, 9999px, 130px, 0); transform: skew(0.5deg); }
+  60% { clip: rect(30px, 9999px, 60px, 0); transform: skew(-0.2deg); }
+  80% { clip: rect(90px, 9999px, 110px, 0); transform: skew(0.4deg); }
+  100% { clip: rect(55px, 9999px, 80px, 0); transform: skew(-0.1deg); }
+}
+
+@keyframes glitch-anim-2 {
+  0% { clip: rect(65px, 9999px, 115px, 0); transform: skew(-0.2deg); }
+  15% { clip: rect(10px, 9999px, 40px, 0); transform: skew(0.4deg); }
+  35% { clip: rect(95px, 9999px, 140px, 0); transform: skew(-0.5deg); }
+  55% { clip: rect(25px, 9999px, 70px, 0); transform: skew(0.1deg); }
+  75% { clip: rect(80px, 9999px, 105px, 0); transform: skew(-0.3deg); }
+  100% { clip: rect(45px, 9999px, 90px, 0); transform: skew(0.2deg); }
+}
+
+
+/* Responsive Design */
+@media (max-width: 900px) {
+    .story-image { max-width: 90%; }
+    h1 { font-size: 2.4rem; }
+    h2 { font-size: 1.8rem; }
+}
+
+@media (max-width: 768px) {
+    h1 { font-size: 2.2rem; }
+    h2 { font-size: 1.6rem; }
+    main { padding: 0 0.8rem; }
+    .section-content { padding: 1.5rem 2rem; }
+     body { padding-top: 80px; }
+    .story-image { max-width: 100%; }
+}
+
+@media (max-width: 480px) {
+     body { padding-top: 110px; } /* Adjust if header wraps more */
+     h1 { font-size: 1.8rem; }
+     h2 { font-size: 1.4rem; }
+     .section-content { padding: 1rem 1.2rem; }
+     pre { padding: 1rem; font-size: 0.85rem; }
+}

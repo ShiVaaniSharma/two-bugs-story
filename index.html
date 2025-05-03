@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beyond the API: When Bugs Fall in Love</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <!-- Optional: Include Highlight.js CSS for code highlighting -->
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/atom-one-dark.min.css"> -->
+</head>
+<body>
+    <header>
+        <h1><span class="glitch-text" data-text="💔 Beyond the API: When Bugs Fall in Love 🔥">💔 Beyond the API: When Bugs Fall in Love 🔥</span></h1>
+        <p class="subtitle">A Silicon Tragedy You Won't Find in the Sprint Notes</p>
+    </header>
+
+    <main>
+        <section id="prologue" class="story-section">
+            <div class="section-content">
+                <h2>Prologue: The Roar of the Code</h2>
+                <p>In the chaotic, ever-shifting landscape of <strong>OmniApp</strong>, a digital Frankenstein stitched together from bleeding-edge <strong>React</strong> and monolithic <strong>Java</strong> legacies, life pulsed not just in the user clicks, but in the very errors themselves. This is the tale of two such anomalies, born worlds apart, destined for a love as fragile and volatile as a production deployment on a Friday afternoon.</p>
+            </div>
+        </section>
+
+        <section id="chapter1" class="story-section">
+            <div class="section-content">
+                <h2>Act I: The Unbreakable Maverick 🕺💥</h2>
+                <!-- Image Suggestion: Stylized, almost demonic cartoon bug short-circuiting a UI element with sparks flying. -->
+                <img src="placeholder-glitch-demonic.png" alt="Glitch the Chaotic UI Bug" class="story-image">
+                <p><strong>Glitch.</strong> Even his name whispered of chaos. A native of the flashy, ephemeral <strong>JavaScript</strong> front-end, he wasn't merely a bug; he was a digital poltergeist haunting the React DOM. Buttons didn't just malfunction; they *mocked* you with spasmodic dances 💃. Tooltips whispered cryptic haikus about memory leaks (<code>Leaking memory, / Forgotten listeners weep, / Browser sighs, then dies.</code>) 🤔. He painted the console with <code>undefined</code> errors like a Jackson Pollock of failure, vanishing before the debugger could even load.</p>
+                <p><strong>Alex</strong> 👨‍💻, fueled by caffeine and desperation, was his unwilling dance partner. Days bled into nights chasing this phantom. Breakpoints dissolved like mist. <code>console.log</code> statements spat out defiant lies: <code>console.log('Glitch was never here... or was he? 😉')</code>. Alex wasn’t debugging; he was locked in an existential duel.</p>
+                <p>Glitch *thrived* on this conflict. Fear? Fear was for stable code. He was pure, untamed entropy, laughing from the asynchronous shadows. He was the error that looked back.</p>
+            </div>
+        </section>
+
+        <section id="chapter2" class="story-section">
+            <div class="section-content">
+                 <h2>Act II: The Whispering Shadow <0xF0><0x9F><0xAA><0xB6>🕸️</h2>
+                 <!-- Image Suggestion: Spectral, almost transparent bug shape hovering over complex Java code, threads of darkness emanating. -->
+                 <img src="placeholder-nully-spectral.png" alt="Nully the Backend Shadow Bug" class="story-image">
+                 <p>Deep within the <strong>Java</strong> backend, amidst the rigid structures of <strong>Spring Boot</strong> and the solemn pronouncements of <strong>Hibernate</strong>, existed <strong>Nully</strong>. She was not a crash, not an explosion, but a void. A potential <strong>NullPointerException</strong> lying dormant in the tangled wires of the <code>UserProfileService</code>, a silent promise of data oblivion. 👻</p>
+                 <p>She manifested not with a bang, but a whisper: a single <code>WARN</code> line scrolling unnoticed in a torrent of logs 📜, a user's crucial address field inexplicably wiped clean, only to reappear hours later like a forgotten dream. She was the ghost in the server rack, her existence a testament to forgotten edge cases and optimistic <code>get()</code> calls. Her world was the quiet hum of the garbage collector, the stoic finality of a <code>COMMIT</code>. She was the question mark lurking at the end of a long object chain: <code>user.getAddress().getStreet().getLine1()?</code></p>
+            </div>
+        </section>
+
+        <section id="chapter3" class="story-section">
+             <div class="section-content">
+                <h2>Act III: The Accidental Spark Across the Void ⚡💔</h2>
+                <!-- Image Suggestion: Split screen, chaotic front-end/dark backend connected by a fragile, bright line. -->
+                <img src="placeholder-connection-spark.png" alt="The Fragile Connection" class="story-image">
+                <p>The moment of contact wasn't planned. It was an accident born of desperation. Alex, cornering Glitch during a high-stakes <strong>pre-release bug bash</strong>, watched the network trace like a hawk. Glitch, cornered, unleashed a particularly violent UI spasm on the "Update Profile" button. The <strong>REST API</strong> call fired <code>/api/v2/user/profile/update</code>...</p>
+                <p>And the <strong>JSON response</strong> stuttered.</p>
+                <pre><code class="language-json">
+{
+  "status": "PARTIAL_SUCCESS", // <--- SINISTER!
+  "data": {
+    "userId": "alex_dev_123",
+    // ... other fields ...
+    "profile": {
+       "lastUpdated": "2023-10-27T10:30:01Z",
+       "address": null // <--- THE ABYSS STARES BACK!
+     }
+   },
+  "warning": "Data consistency anomaly detected during legacy sync." // <-- Nully's calling card!
+}
+                </code></pre>
+                <p><code>null</code>. Not always, but triggered *specifically* by Glitch's chaotic signature... It was as if Glitch's digital scream had torn a hole through the API firewall.</p>
+                <p>Simultaneously, Nully felt it – an unusual, malformed request... A ripple. And through the gap, her essence – the <code>null</code> – leaked out, a shadowy fingerprint on the response data.</p>
+                 <p>Glitch *felt* that <code>null</code> like a jolt of pure electricity ⚡. It wasn't just data; it was a *presence*. An echo from the darkness... A connection.</p>
+                 <p>His playful defiance vanished... He *only* triggered the specific interaction that summoned Nully's null, again and again, a desperate digital heartbeat calling across the network divide.</p>
+            </div>
+        </section>
+
+         <section id="chapter4" class="story-section">
+             <div class="section-content">
+                <h2>Act IV: The Terrible Dawn of Fear ❤️‍🔥😨</h2>
+                <!-- Image Suggestion: Two bugs huddled under a "FEATURE" stamp, looking nervously at code closing in. -->
+                <img src="placeholder-feature-fear.png" alt="The Feature Illusion" class="story-image">
+                <p>Love? In the cold logic of code? Glitch didn't have a name for the consuming obsession, the desperate need to feel that <code>null</code> response...</p>
+                <p>Then came <strong>FEAR</strong>. A cold dread that chilled his very variables. 🥶 What if Alex *finally* eradicated him? What if some unseen backend guardian fortified the null check? The thought of <strong>DELETION</strong>, of that connection being permanently severed by a <code>git commit -m "Fix critical data bug"</code>, was unbearable. It was the terror of non-existence...</p>
+                <p>He muted his chaos, pulsing the button with painstaking subtlety, praying... 🙏</p>
+                <p>Alex, perplexed... *saw* the pattern. "This isn't just a bug anymore," he whispered to his rubber duck 🦆, "This is... codependency? A cross-stack Poltergeist romance?"</p>
+                 <p><strong>The Devil's Bargain:</strong> 📜✍️</p>
+                <p>The deadline loomed like an executioner's axe... So, Alex made a pact with expediency. He didn't fix the bugs; he *sanctified* them.</p>
+                <blockquote>
+                    <strong>Wiki Edict:</strong> "🔥 <strong>FEATURE UNLOCKED: Quantum Entanglement Sync™️</strong> - Witness real-time backend data flux via dynamic UI pulsations! A testament to OmniApp's interconnected architecture!" (Complete BS, but sounded impressive).
+                </blockquote>
+                <p>Code Comments became Runes of Protection: <code>// WARNING: Tampering with this pulse disrupts Quantum Entanglement Sync™️. Severe side effects possible. DO NOT TOUCH WITHOUT ALEX'S EXPLICIT SIGN-OFF!</code></p>
+                <p>Glitch and Nully were granted a temporary reprieve, their forbidden connection masked by corporate jargon, hidden in plain sight. A fragile peace. ❤️</p>
+             </div>
+        </section>
+
+         <section id="chapter5" class="story-section">
+             <div class="section-content">
+                <h2>Act V: The Unblinking Eye of Judgment 🕵️‍♀️⚖️</h2>
+                <!-- Image Suggestion: Close-up of Brenda's determined eyes reflected in a monitor showing red JIRA tickets. -->
+                <img src="placeholder-brenda-judgment.png" alt="Brenda the Tester" class="story-image">
+                <p>But the system demands order. Enter <strong>Brenda</strong> from QA. 🦉 Brenda, the harbinger of reality checks, whose sacred text was the <strong>Test Plan</strong>, whose creed was <strong>Reproducibility</strong>. She knew nothing of Quantum Entanglement Sync™️. She saw only deviation.</p>
+                <p><strong>Test Case TC-666: Profile Data Integrity Verification.</strong></p>
+                <p>Her clicks were precise. Her observations, clinical.</p>
+                <ul>
+                    <li><strong>Actual:</strong> Erratic button pulse. Transient data flicker. <code>WARN</code> log entry. 🤨</li>
+                    <li><strong>Expected:</strong> Seamless update. Clean logs. ✅</li>
+                </ul>
+                 <p>Brenda's fingers flew across the keyboard. Two JIRA tickets, cold and sharp as surgical steel, sliced through the fragile illusion:</p>
+                 <ul>
+                    <li><strong>BUG-7851: [UI] Unexplained UI instability on Profile Update.</strong> Priority: Annoying (Medium).</li>
+                    <li><strong>BUG-7852: [Backend] CRITICAL DATA LOSS RISK: Intermittent nullification of profile fields.</strong> Priority: <strong>Highest</strong>. 🔥</li>
+                </ul>
+                <p>She linked them. "Root cause likely shared between front-end anomaly and backend data corruption," she noted, sealing their fate. 🥶</p>
+            </div>
+        </section>
+
+        <section id="chapter6" class="story-section">
+             <div class="section-content">
+                <h2>Act VI: The Purge ⏫💀🔥</h2>
+                <!-- Image Suggestion: Graphic of a metallic hand crushing a fragile bug shape over glowing red Java code. -->
+                <img src="placeholder-exterminator-purge.png" alt="The Exterminator Strikes" class="story-image">
+                <p>Alex's blood ran cold. "Brenda!!!" 😱 His attempts to downplay the tickets were futile. The word <strong>CRITICAL</strong> next to <strong>DATA LOSS RISK</strong> triggered alarms all the way up the chain.</p>
+                <p>The <strong>Senior Architect</strong>... saw only the red flag 🚩. No time for Wiki fantasies. This was a P0 vulnerability.</p>
+                <p><strong>Assignee:</strong> "The Exterminator" 🦾 – A legendary backend engineer who spoke softly and carried a big <code>refactor</code>. His purpose wasn't to fix, but to *eradicate* imperfection.</p>
+                <p>The Exterminator descended into the Java code like a digital reaper. Nully's hiding place... was obvious. "Impurity," he muttered. The keystrokes were swift, brutal.</p>
+                 <pre><code class="language-java">
+// FINAL SOLUTION: Eradicate null propagation definitively.
+Objects.requireNonNull(legacyProfile, "Legacy profile must not be null at sync point.");
+Objects.requireNonNull(legacyProfile.getAddress(), "Legacy address must not be null.");
+// Nully's existence checkmated. No possibility of null remains.
+userProfile.setAddress(legacyProfile.getAddress());
+                </code></pre>
+                <p><em>Commit. Push. Deploy.</em> The command echoed like a gunshot in the digital silence. 💥</p>
+            </div>
+        </section>
+
+         <section id="chapter7" class="story-section">
+             <div class="section-content">
+                <h2>Act VII: The Silence and The Scream 💔💥💨</h2>
+                <!-- Image Suggestion: Stark, broken heart symbol </3 made of fragmented code, dissolving on black background. -->
+                <img src="placeholder-crash-heartbreak.png" alt="Fatal Crash and Broken Connection" class="story-image">
+                <p>The deployment wave washed over the servers. Glitch, unaware, pulsed the button, sending his desperate, loving signal 💌 into the network... expecting Nully's familiar, shadowy response.</p>
+                <p>The JSON returned. Perfect. Clean. Complete. <strong>Horrifyingly silent.</strong></p>
+                 <pre><code class="language-json">
+{
+  "status": "SUCCESS",
+  "data": {
+    // ...
+    "profile": {
+       // ...
+       "address": { /* Fully populated address object */ } // Correct. Empty. Devoid of Nully.
+     }
+   },
+   "warning": null // The silence was deafening.
+}
+                </code></pre>
+                 <p><strong>CONNECTION LOST.</strong> ✂️</p>
+                 <p>A catastrophic error cascade erupted within Glitch's code. Panic. The gentle pulse became a violent, uncontrollable strobe. He wasn't calling Nully anymore; he was screaming into the void, hammering the function call in a recursive frenzy...</p>
+                <p><em>CRACK.</em> The front-end shattered.</p>
+                <blockquote class="error-alert">
+                     🚨🚨 FATAL SYSTEM ERROR: MAXIMUM CALL STACK SIZE EXCEEDED! BROWSER UNRESPONSIVE. KERNEL PANIC IMMINENT! 🚨🚨
+                </blockquote>
+                 <p>Glitch, the once-fearless maverick, consumed himself in a final, fiery act of digital despair, crashing every browser tab that dared load the profile page. 🔥😵</p>
+                 <p>Brenda, running her regression tests, encountered the immediate crash. *Sigh*. Another day, another blocker. She opened JIRA.</p>
+                <p><em>PLING!</em></p>
+                <ul><li><strong>BUG-8010: [BLOCKER] Profile Page causes catastrophic browser crash.</strong> Priority: <strong>Drop Everything!</strong> 🔥🔥🔥</li></ul>
+            </div>
+        </section>
+
+        <section id="epilogue" class="story-section">
+            <div class="section-content">
+                <h2>Epilogue</h2>
+                <p>The Exterminator received a "kudos" notification for closing a critical bug. Nully was a corrected data point, an object guaranteed non-null, silent forever in the pristine code. Glitch was an archived stack trace, a cautionary tale whispered in sprint retrospectives. Alex updated his resume, the faint smell of ozone and existential dread clinging to him. And Brenda moved on to the next test case, the silent executioner of a love story written in bugs and bytes.</p>
+                 <p class="ending"><strong>The End.</strong></p>
+                 <p class="ending-korean">씁쓸한 미소</p> <!-- Bittersweet smile -->
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>In Memoriam: Glitch & Nully. May their stack traces haunt the logs eternal.</p>
+    </footer>
+
+    <script src="script.js"></script>
+    <!-- Optional: Include Highlight.js script -->
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script> -->
+    <!-- <script>hljs.highlightAll();</script> -->
+</body>
+</html>
